@@ -1,5 +1,7 @@
 package com.diary.commons.handlerinterceptor;
 
+import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,6 +21,14 @@ public class DiaryHandlerInterceptorImplements implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
+    	// 获取所以参数名
+    	Enumeration<String> names = request.getParameterNames();
+    	while (names.hasMoreElements()) {
+			String name = (String) names.nextElement();
+			System.out.println(name+"测试");
+		}
+    	
+    	String string = request.getParameter("account");
         System.out.println("------preHandle-----");
         return true;
     }
