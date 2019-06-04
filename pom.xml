@@ -10,7 +10,6 @@
     <module>diary-service</module>
     <module>diary-generator</module>
     <module>diary-core</module>
-    <module>diary-utils</module>
     <module>diary-commons</module>
   </modules>
   
@@ -32,6 +31,13 @@
 	        </exclusion>  
     	</exclusions>
 	</dependency>
+
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-aop</artifactId>
+	</dependency>
+	
+	
 	<dependency>
 	    <groupId>org.mybatis.spring.boot</groupId>
 	    <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -88,6 +94,18 @@
 	    <version>3.1.0</version>
 	    <scope>provided</scope>
 	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.shiro</groupId>
+	    <artifactId>shiro-spring</artifactId>
+	    <version>1.4.0</version>
+	</dependency>
+	
+<!-- 	<dependency>
+	  <groupId>org.apache.shiro</groupId>
+	  <artifactId>shiro-spring-boot-web-starter</artifactId>
+	  <version>1.4.0</version>
+ 	</dependency> -->
 
 			
   </dependencies>
@@ -99,17 +117,5 @@
   	<java.version>11</java.version>
   </properties>
   
-  <!-- <build>
-    <plugins>
-       <plugin>
-           <groupId>org.springframework.boot</groupId>
-           <artifactId>spring-boot-maven-plugin</artifactId>
-       </plugin>
-       <configuration>
-			<mainClass>com.diary.service.DiaryApplication</mainClass>
-		</configuration>
-    </plugins>
-    <finalName>diary-parent</finalName>
-  </build> -->
 
 </project>

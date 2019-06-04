@@ -1,17 +1,15 @@
-package com.diary.commons.configureradapter;
+package com.diary.commons.handlerinterceptor;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-
-import com.diary.commons.handlerinterceptor.DiaryHandlerInterceptorImplements;
 
 /**
  * @author liuchaozheng
  * @since 2019/5/17
  */
 
-@Configuration
+//@Configuration
 public class DiaryConfigurerAdapter extends WebMvcConfigurationSupport {
 	
 	/**
@@ -20,6 +18,6 @@ public class DiaryConfigurerAdapter extends WebMvcConfigurationSupport {
 	@Override
     public void addInterceptors(InterceptorRegistry registry) {
 		super.addInterceptors(registry);
-        registry.addInterceptor(new DiaryHandlerInterceptorImplements());
+		registry.addInterceptor(new DiaryHandlerInterceptorImplements());
     }
 }

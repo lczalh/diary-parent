@@ -35,6 +35,7 @@
     </dependency> 
   </dependencies>
   
+  <!-- 打包 -->
   <build>
     <plugins>
 	    <plugin>

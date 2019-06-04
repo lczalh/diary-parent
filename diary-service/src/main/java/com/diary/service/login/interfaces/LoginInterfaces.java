@@ -1,6 +1,6 @@
 package com.diary.service.login.interfaces;
 
-import com.diary.dao.login.pojo.User;
+import com.diary.dao.user.pojo.User;
 
 
 public interface LoginInterfaces {

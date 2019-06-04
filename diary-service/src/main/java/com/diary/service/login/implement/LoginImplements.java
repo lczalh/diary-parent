@@ -3,8 +3,8 @@ package com.diary.service.login.implement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.diary.dao.login.mapper.UserMapper;
-import com.diary.dao.login.pojo.User;
+import com.diary.dao.user.mapper.UserMapper;
+import com.diary.dao.user.pojo.User;
 import com.diary.service.login.interfaces.LoginInterfaces;
 
 

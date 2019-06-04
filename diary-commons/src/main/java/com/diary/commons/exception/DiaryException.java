@@ -45,11 +45,6 @@ public class DiaryException extends RuntimeException {
 		
 	}
 	
-//	public DiaryException(int code, String msg) {
-//		super();
-//		this.code = code;
-//		this.msg = msg;
-//	}
 	
 	
 	
