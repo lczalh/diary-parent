@@ -20,8 +20,8 @@ import org.apache.shiro.mgt.SecurityManager;
 public class ShiroConfig {
 	
 	@Bean
-	public DiaryRealm getDiaryRealm() {
-		DiaryRealm diaryRealm = new DiaryRealm();
+	public ShiroRealm getDiaryRealm() {
+		ShiroRealm diaryRealm = new ShiroRealm();
 		
 		//
 //		HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
@@ -40,12 +40,13 @@ public class ShiroConfig {
      * </br>Enable Shiro Annotations for Spring-configured beans. Only run after the lifecycleBeanProcessor(保证实现了Shiro内部lifecycle函数的bean执行) has run
      * </br>不使用注解的话，可以注释掉这两个配置
      */
-    @Bean
-    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
-        DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
-        advisorAutoProxyCreator.setProxyTargetClass(true);
-        return advisorAutoProxyCreator;
-    }
+	// doGetAuthorizationInfo 会调用两次
+//    @Bean
+//    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
+//        DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
+//        advisorAutoProxyCreator.setProxyTargetClass(true);
+//        return advisorAutoProxyCreator;
+//    }
  
     @Bean
     public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor(
