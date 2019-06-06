@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.alibaba.fastjson.JSONObject;
 import com.diary.commons.exception.DiaryException;
+import com.diary.commons.exception.ExceptionCodeAndMsg;
 import com.diary.commons.resultmap.DiaryResultMap;
 
 /**
@@ -29,6 +30,7 @@ public class DiaryControllerAdvice {
 		DiaryResultMap map = new DiaryResultMap();
 		map.setCode(100);
 		map.setMsg(ex.getMessage());
+		map.setResult("");
 		return JSONObject.toJSONString(map);
 	}
 	
@@ -42,6 +44,7 @@ public class DiaryControllerAdvice {
 		DiaryResultMap map = new DiaryResultMap();
 		map.setCode(ex.getCode());
 		map.setMsg(ex.getMsg());
+		map.setResult("");
 		return JSONObject.toJSONString(map);
 	}
 }

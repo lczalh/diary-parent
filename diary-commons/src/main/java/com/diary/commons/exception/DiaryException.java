@@ -27,6 +27,8 @@ public class DiaryException extends RuntimeException {
 	private int code;
 	// 异常消息
 	private String msg;
+	// 
+	private Object result;
 	
 	public int getCode() {
 		return code;
@@ -41,8 +43,13 @@ public class DiaryException extends RuntimeException {
 		this.msg = msg;
 	}
 	
-	private DiaryException() {
-		
+	private DiaryException() {}
+	
+	public Object getResult() {
+		return result;
+	}
+	public void setResult(Object result) {
+		this.result = result;
 	}
 	
 	

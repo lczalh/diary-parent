@@ -1,4 +1,4 @@
-package com.diary.core.login.controller;
+package com.diary.core.login;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -39,6 +39,7 @@ public class LoginController {
         // 执行认证登陆
         subject.login(token);
         if (subject.isAuthenticated()) { // 登陆成功
+        	// 获取用户信息
         	User user = (User)subject.getPrincipals().getPrimaryPrincipal();
         	DiaryResultMap diaryResultMap = new DiaryResultMap();
         	diaryResultMap.setCode(2000);
