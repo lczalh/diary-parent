@@ -28,7 +28,7 @@ public class DiaryControllerAdvice {
 	@ExceptionHandler(value = Exception.class)
 	public String globalExceptionHandler(Exception ex) {
 		DiaryResultMap map = new DiaryResultMap();
-		map.setCode(100);
+		map.setCode("1000");
 		map.setMsg(ex.getMessage());
 		map.setResult("");
 		return JSONObject.toJSONString(map);

@@ -42,7 +42,7 @@ public class LoginController {
         	// 获取用户信息
         	User user = (User)subject.getPrincipals().getPrimaryPrincipal();
         	DiaryResultMap diaryResultMap = new DiaryResultMap();
-        	diaryResultMap.setCode(2000);
+        	diaryResultMap.setCode("2000");
         	diaryResultMap.setMsg("登陆成功");
         	diaryResultMap.setResult(user);
     		return JSONObject.toJSONString(diaryResultMap);
@@ -58,7 +58,7 @@ public class LoginController {
 	 	String aaaString = DiaryMD5.md5("824092805", false, true);
 		
 		DiaryException diaryException = DiaryException.getInstance();
-		diaryException.setCode(100);
+		diaryException.setCode("100");
 		diaryException.setMsg(aaaString);
 		throw diaryException;
 		//return "121312"; 

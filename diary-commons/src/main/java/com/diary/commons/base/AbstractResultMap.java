@@ -6,15 +6,15 @@ package com.diary.commons.base;
  */
 public abstract class AbstractResultMap {
 	// 状态
-	private int code;
+	private String code;
 	// 信息
 	private String msg;
 	
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
-	public void setCode(int code) {
-		this.code = code;
+	public void setCode(String string) {
+		this.code = string;
 	}
 	
 	public String getMsg() {

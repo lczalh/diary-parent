@@ -4,5 +4,5 @@ import com.diary.dao.user.pojo.User;
 
 public interface RegisterInterface {
 	
-	public void insertUser(String account, String password, String phone);
+	public User insertUser(String account, String password, String phone);
 }

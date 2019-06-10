@@ -10,7 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @MapperScan({"com.diary.dao"})
 @ComponentScan(basePackages = {"com.diary.service","com.diary.core","com.diary.commons"})
-//@ServletComponentScan("com.diary.commons")
 public class DiaryApplication {
 
 	public static void main(String[] args) {

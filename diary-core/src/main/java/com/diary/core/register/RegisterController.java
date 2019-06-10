@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
+import com.diary.commons.exception.ExceptionCodeAndMsg;
+import com.diary.commons.resultmap.DiaryResultMap;
+import com.diary.dao.user.pojo.User;
 import com.diary.service.register.RegisterInterface;
 
 @RestController
@@ -27,8 +31,11 @@ public class RegisterController {
 						   @RequestParam(value = "password", required = true) String password,
 						   @RequestParam(value = "phone", required = true) String phone) {
 		
-		registerInterface.insertUser(account, password, phone);
-		
-		return "1";
+		User user = registerInterface.insertUser(account, password, phone);
+		DiaryResultMap diaryResultMap = new DiaryResultMap();
+    	diaryResultMap.setCode(ExceptionCodeAndMsg.succeedCode);
+    	diaryResultMap.setMsg(ExceptionCodeAndMsg.succeedMsg);
+    	diaryResultMap.setResult(user);
+		return JSONObject.toJSONString(diaryResultMap);
 	}
 }
