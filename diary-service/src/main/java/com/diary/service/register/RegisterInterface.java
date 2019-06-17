@@ -1,6 +1,6 @@
 package com.diary.service.register;
 
-import com.diary.dao.user.pojo.User;
+import com.diary.dao.user.User;
 
 public interface RegisterInterface {
 	

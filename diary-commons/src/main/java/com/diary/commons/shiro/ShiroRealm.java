@@ -17,22 +17,23 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.diary.dao.user.mapper.UserMapper;
-import com.diary.dao.user.permission.mapper.PermissionMapper;
-import com.diary.dao.user.permission.pojo.Permission;
-import com.diary.dao.user.permission.pojo.PermissionExample;
-import com.diary.dao.user.pojo.User;
-import com.diary.dao.user.pojo.UserExample;
-import com.diary.dao.user.pojo.UserExample.Criteria;
-import com.diary.dao.user.role.mapper.RoleMapper;
-import com.diary.dao.user.role.pojo.Role;
-import com.diary.dao.user.role.pojo.RoleExample;
-import com.diary.dao.user.rolepermissionassociation.mapper.RolePermissionMapper;
-import com.diary.dao.user.rolepermissionassociation.pojo.RolePermission;
-import com.diary.dao.user.rolepermissionassociation.pojo.RolePermissionExample;
-import com.diary.dao.user.userroleassociation.mapper.UserRoleMapper;
-import com.diary.dao.user.userroleassociation.pojo.UserRole;
-import com.diary.dao.user.userroleassociation.pojo.UserRoleExample;
+import com.diary.dao.permission.Permission;
+import com.diary.dao.permission.PermissionExample;
+import com.diary.dao.permission.PermissionMapper;
+import com.diary.dao.role.Role;
+import com.diary.dao.role.RoleExample;
+import com.diary.dao.role.RoleMapper;
+import com.diary.dao.rolepermission.RolePermission;
+import com.diary.dao.rolepermission.RolePermissionExample;
+import com.diary.dao.rolepermission.RolePermissionMapper;
+import com.diary.dao.user.User;
+import com.diary.dao.user.UserExample;
+import com.diary.dao.user.UserMapper;
+import com.diary.dao.userrole.UserRole;
+import com.diary.dao.userrole.UserRoleExample;
+import com.diary.dao.userrole.UserRoleMapper;
+
+
 
 public class ShiroRealm extends AuthorizingRealm {
 	
@@ -112,7 +113,7 @@ public class ShiroRealm extends AuthorizingRealm {
         String account = authenticationToken.getPrincipal().toString();
         // 自定义查询条件
         UserExample userExample = new UserExample();
-        Criteria userCriteria = userExample.createCriteria();
+        com.diary.dao.user.UserExample.Criteria userCriteria = userExample.createCriteria();
         userCriteria.andAccountEqualTo(account);
         // 查询当前账号用户信息
         List<User> users = userMapper.selectByExample(userExample);
@@ -128,7 +129,7 @@ public class ShiroRealm extends AuthorizingRealm {
 	 */
 	private String getUserRoleId(String userId) {
 		UserRoleExample userRoleExample = new UserRoleExample();
-        com.diary.dao.user.userroleassociation.pojo.UserRoleExample.Criteria userRoleCriteria = userRoleExample.createCriteria();
+        com.diary.dao.userrole.UserRoleExample.Criteria userRoleCriteria = userRoleExample.createCriteria();
         userRoleCriteria.andUserIdEqualTo(userId);
         List<UserRole> userRoles = userRoleMapper.selectByExample(userRoleExample);
         UserRole userRole = userRoles.get(0);
@@ -143,7 +144,7 @@ public class ShiroRealm extends AuthorizingRealm {
 	 */
 	private List<Role> getUserRoleInfo(String roleId) {
 		RoleExample roleExample = new RoleExample();
-		com.diary.dao.user.role.pojo.RoleExample.Criteria criteria = roleExample.createCriteria();
+		com.diary.dao.role.RoleExample.Criteria criteria = roleExample.createCriteria();
 		criteria.andRoleIdEqualTo(roleId);
 		List<Role> roles = roleMapper.selectByExample(roleExample);
 		return roles;
@@ -156,7 +157,7 @@ public class ShiroRealm extends AuthorizingRealm {
 	 */
 	private String getRolePermissionId(String roleId) {
 		RolePermissionExample rolePermissionExample = new RolePermissionExample();
-		com.diary.dao.user.rolepermissionassociation.pojo.RolePermissionExample.Criteria criteria = rolePermissionExample.createCriteria();
+		com.diary.dao.rolepermission.RolePermissionExample.Criteria criteria = rolePermissionExample.createCriteria();
 		criteria.andRoleIdEqualTo(roleId);
 		List<RolePermission> rolePermissions = rolePermissionMapper.selectByExample(rolePermissionExample);
 		RolePermission rolePermission = rolePermissions.get(0);
@@ -168,7 +169,7 @@ public class ShiroRealm extends AuthorizingRealm {
 	 */
 	private List<Permission> getRolePermissionInfo(String permissionId) {
 		PermissionExample permissionExample = new PermissionExample();
-		com.diary.dao.user.permission.pojo.PermissionExample.Criteria criteria= permissionExample.createCriteria();
+		com.diary.dao.permission.PermissionExample.Criteria criteria= permissionExample.createCriteria();
 		criteria.andPermissionIdEqualTo(permissionId);
 		List<Permission> permissions = permissionMapper.selectByExample(permissionExample);
 		return permissions;
